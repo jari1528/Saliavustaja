@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Saliavustaja
 {
-    public partial class Form1 : Form
+    public partial class Saliavustaja : Form
     {
-        public Form1()
+        public Saliavustaja()
         {
             InitializeComponent();
         }
