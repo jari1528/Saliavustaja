@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UusiTilaus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UusiTilaus.Designer.cs">
+      <DependentUpon>UusiTilaus.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Saliavustaja.resx">
       <DependentUpon>Saliavustaja.cs</DependentUpon>
     </EmbeddedResource>
