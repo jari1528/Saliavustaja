@@ -1,0 +1,22 @@
+Harjoitustyön toimeksianto ja roolit
+Ravintola-alan yrittäjä on perustamassa uutta ravintolaa. Aikaisemmissa kohteissa hän on ollut tyytymätön tapaan kirjata salissa asiakkaiden tilaukset. Ongelmia on ollut välillä salihenkilökunnan käsialassa tai merkintätavoissa. Vaikka tilaukset onnistuvat pääosin mainiosti, on niissä aina hetkittäin ongelmia ja virheitä. Esimerkiksi uusien työntekijöiden perehdyttämisen aikana.
+
+Yrittäjälle on tullut ajatus, että tähän on pakko olla parempi ja aikaa säästävämpi keino. Verkostoistaan ja vanhoista yhteystiedoistaan hän on löytänyt oikean henkilön auttamaan ongelmansa kanssa... TEIDÄT JUURI!
+
+Olet sopivasti aloittanut tietojenkäsittelyn opinnot ja kehittämään osaamista ATK:n parissa. Kuin sattumalta, menossa on sovelluskehityksen -moduuli, jonka pohjalta yrittäjäystäväsi saa loistavan idean. 
+
+"Tahtoisin ohjelman ravintolahenkilökunnalle tilauksen tekemistä varten. Aihe sopii täydellisesti opintojaksoosi, joten teeppä sellainen. Ai niin... uusi ravintolani avataan 4 viikon päästä. Nähdään silloin!" - terveisin, yrittäjäystäväsi
+
+Jäät miettimään mitä tuli äsken luvattua. Huomaat, ettet selviä tehtävästä yksin ja valitset 2 opiskelijakaveriasi auttamaan tehtävän kanssa. Yhdessä huomaatte, ettei toimeksiannossa ole päätä eikä häntää. 
+
+"Kuinka ihmeessä tästä lauseesta voimme rakentaa toimivan sovelluksen?" - pohditte keskenänne.
+
+
+
+PROJEKTINHALLINNAN PERUSTEET JA KUINKA IDEASTA SYNTYY OHJELMA?
+
+Teemassa projektiryhmällä on toimittajan rooli ja he keskittyvät asiakkaan ongelman ratkaisuun. Teeman vetäjä toimii asiakkaan roolissa ja kertoo lisätietoja ongelmansa ympäriltä.
+
+Projektiryhmän ei tarvitse lähteä ratkomaan ongelmia yksin. Teeman edetessä ja harjoitustyön materiaaleista löytyy paljon vinkkejä, kuinka ryhmä pääsee eteenpäin. Ryhmällä on apuna myös kokenut projektinhallinnan asiantuntija (teeman vetäjä), joka pitää 4 viikon aikana iskuluentoja teeman aiheen ympäriltä.
+
+Ohjelman teossa ei aina pärjää pelkällä ennakkotiedolla. Siksi tärkeää onkin alkaa kysymään ja selvittämään mitä asiakas todella tahtoo.
