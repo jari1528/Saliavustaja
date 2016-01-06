@@ -32,12 +32,12 @@
             // 
             // Saliavustaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AllowDrop = true;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 322);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(375, 340);
             this.Name = "Saliavustaja";
-            this.Text = "Saliavustaja testi";
+            this.Text = "Saliavustaja v.01";
             this.ResumeLayout(false);
 
         }
