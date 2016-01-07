@@ -31,5 +31,10 @@ namespace Saliavustaja
         {
 
         }
+
+        private void UusiTilaus_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
