@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TilausLista = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -57,7 +55,8 @@
             this.TilausLista.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.TilausLista.Location = new System.Drawing.Point(302, 46);
+            this.TilausLista.Location = new System.Drawing.Point(301, 46);
+            this.TilausLista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.TilausLista.Name = "TilausLista";
             this.TilausLista.Size = new System.Drawing.Size(748, 264);
             this.TilausLista.TabIndex = 1;
@@ -69,7 +68,8 @@
             // 
             // UusiTilausButton
             // 
-            this.UusiTilausButton.Location = new System.Drawing.Point(42, 259);
+            this.UusiTilausButton.Location = new System.Drawing.Point(43, 258);
+            this.UusiTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.UusiTilausButton.Name = "UusiTilausButton";
             this.UusiTilausButton.Size = new System.Drawing.Size(111, 49);
             this.UusiTilausButton.TabIndex = 30;
@@ -79,7 +79,7 @@
             // TilausSummaLabel
             // 
             this.TilausSummaLabel.AutoSize = true;
-            this.TilausSummaLabel.Location = new System.Drawing.Point(436, 749);
+            this.TilausSummaLabel.Location = new System.Drawing.Point(436, 750);
             this.TilausSummaLabel.Name = "TilausSummaLabel";
             this.TilausSummaLabel.Size = new System.Drawing.Size(44, 17);
             this.TilausSummaLabel.TabIndex = 29;
@@ -88,7 +88,7 @@
             // VeroSummaLabel
             // 
             this.VeroSummaLabel.AutoSize = true;
-            this.VeroSummaLabel.Location = new System.Drawing.Point(436, 723);
+            this.VeroSummaLabel.Location = new System.Drawing.Point(436, 722);
             this.VeroSummaLabel.Name = "VeroSummaLabel";
             this.VeroSummaLabel.Size = new System.Drawing.Size(44, 17);
             this.VeroSummaLabel.TabIndex = 28;
@@ -106,7 +106,7 @@
             // KokonaishintaLabel
             // 
             this.KokonaishintaLabel.AutoSize = true;
-            this.KokonaishintaLabel.Location = new System.Drawing.Point(41, 749);
+            this.KokonaishintaLabel.Location = new System.Drawing.Point(41, 750);
             this.KokonaishintaLabel.Name = "KokonaishintaLabel";
             this.KokonaishintaLabel.Size = new System.Drawing.Size(160, 17);
             this.KokonaishintaLabel.TabIndex = 26;
@@ -115,7 +115,7 @@
             // VeronOsuusLabel
             // 
             this.VeronOsuusLabel.AutoSize = true;
-            this.VeronOsuusLabel.Location = new System.Drawing.Point(41, 723);
+            this.VeronOsuusLabel.Location = new System.Drawing.Point(41, 722);
             this.VeronOsuusLabel.Name = "VeronOsuusLabel";
             this.VeronOsuusLabel.Size = new System.Drawing.Size(88, 17);
             this.VeronOsuusLabel.TabIndex = 25;
@@ -132,7 +132,8 @@
             // 
             // LisaaTilausButton
             // 
-            this.LisaaTilausButton.Location = new System.Drawing.Point(918, 715);
+            this.LisaaTilausButton.Location = new System.Drawing.Point(917, 715);
+            this.LisaaTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LisaaTilausButton.Name = "LisaaTilausButton";
             this.LisaaTilausButton.Size = new System.Drawing.Size(133, 46);
             this.LisaaTilausButton.TabIndex = 23;
@@ -142,6 +143,7 @@
             // PeruTilausButton
             // 
             this.PeruTilausButton.Location = new System.Drawing.Point(761, 715);
+            this.PeruTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PeruTilausButton.Name = "PeruTilausButton";
             this.PeruTilausButton.Size = new System.Drawing.Size(141, 46);
             this.PeruTilausButton.TabIndex = 22;
@@ -151,6 +153,7 @@
             // PoistaAteriaButton
             // 
             this.PoistaAteriaButton.Location = new System.Drawing.Point(505, 550);
+            this.PoistaAteriaButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PoistaAteriaButton.Name = "PoistaAteriaButton";
             this.PoistaAteriaButton.Size = new System.Drawing.Size(111, 49);
             this.PoistaAteriaButton.TabIndex = 21;
@@ -160,6 +163,7 @@
             // LisaaAteriaButton
             // 
             this.LisaaAteriaButton.Location = new System.Drawing.Point(505, 495);
+            this.LisaaAteriaButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LisaaAteriaButton.Name = "LisaaAteriaButton";
             this.LisaaAteriaButton.Size = new System.Drawing.Size(111, 49);
             this.LisaaAteriaButton.TabIndex = 20;
@@ -168,33 +172,18 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(633, 400);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(418, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(419, 277);
             this.dataGridView1.TabIndex = 19;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // RuokalistaLaatikko
             // 
             this.RuokalistaLaatikko.Location = new System.Drawing.Point(37, 400);
+            this.RuokalistaLaatikko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RuokalistaLaatikko.Name = "RuokalistaLaatikko";
             this.RuokalistaLaatikko.Size = new System.Drawing.Size(444, 277);
             this.RuokalistaLaatikko.TabIndex = 18;
@@ -213,12 +202,20 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "testipöytä1",
-            "testipöytä2"});
-            this.comboBox1.Location = new System.Drawing.Point(38, 356);
+            "Pöytä 1",
+            "Pöytä 2",
+            "Pöytä 3",
+            "Pöytä 4",
+            "Pöytä 5",
+            "Kabinetti 1",
+            "Kabinetti 2",
+            "Parveke "});
+            this.comboBox1.Location = new System.Drawing.Point(37, 356);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(443, 24);
             this.comboBox1.TabIndex = 16;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // TilauksetLabel
             // 
@@ -234,7 +231,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1091, 787);
+            this.ClientSize = new System.Drawing.Size(1091, 786);
             this.Controls.Add(this.TilauksetLabel);
             this.Controls.Add(this.UusiTilausButton);
             this.Controls.Add(this.TilausSummaLabel);
@@ -252,9 +249,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.TilausLista);
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Saliavustaja";
-            this.Text = "Saliavustaja v.01";
+            this.Text = "Saliavustaja v0.02";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
