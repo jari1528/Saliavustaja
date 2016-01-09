@@ -95,7 +95,7 @@
             // columnHeaderTuote
             // 
             columnHeaderTuote.Text = "Tuote";
-            columnHeaderTuote.Width = 336;
+            columnHeaderTuote.Width = 371;
             // 
             // TilausLista
             // 
@@ -243,8 +243,9 @@
             listViewItem8,
             listViewItem9,
             listViewItem10});
-            this.RuokalistaLaatikko.Location = new System.Drawing.Point(37, 400);
+            this.RuokalistaLaatikko.Location = new System.Drawing.Point(36, 400);
             this.RuokalistaLaatikko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RuokalistaLaatikko.MultiSelect = false;
             this.RuokalistaLaatikko.Name = "RuokalistaLaatikko";
             this.RuokalistaLaatikko.Size = new System.Drawing.Size(444, 277);
             this.RuokalistaLaatikko.TabIndex = 18;
@@ -254,7 +255,7 @@
             // columnHeaderAhinta
             // 
             this.columnHeaderAhinta.Text = "A-Hinta";
-            this.columnHeaderAhinta.Width = 377;
+            this.columnHeaderAhinta.Width = 69;
             // 
             // label1
             // 
