@@ -21,5 +21,10 @@ namespace Saliavustaja
         {
 
         }
+
+        private void RuokalistaLaatikko_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
