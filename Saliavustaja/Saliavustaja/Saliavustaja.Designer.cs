@@ -231,11 +231,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(657, 320);
+            this.dataGridView1.Location = new System.Drawing.Point(657, 316);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(487, 321);
+            this.dataGridView1.Size = new System.Drawing.Size(487, 318);
             this.dataGridView1.TabIndex = 19;
             // 
             // RuokalistaLaatikko
@@ -254,11 +254,11 @@
             listViewItem8,
             listViewItem9,
             listViewItem10});
-            this.RuokalistaLaatikko.Location = new System.Drawing.Point(36, 364);
+            this.RuokalistaLaatikko.Location = new System.Drawing.Point(38, 360);
             this.RuokalistaLaatikko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RuokalistaLaatikko.MultiSelect = false;
             this.RuokalistaLaatikko.Name = "RuokalistaLaatikko";
-            this.RuokalistaLaatikko.Size = new System.Drawing.Size(444, 277);
+            this.RuokalistaLaatikko.Size = new System.Drawing.Size(443, 274);
             this.RuokalistaLaatikko.TabIndex = 18;
             this.RuokalistaLaatikko.UseCompatibleStateImageBehavior = false;
             this.RuokalistaLaatikko.View = System.Windows.Forms.View.Details;
@@ -267,7 +267,7 @@
             // columnHeaderAhinta
             // 
             this.columnHeaderAhinta.Text = "A-Hinta";
-            this.columnHeaderAhinta.Width = 97;
+            this.columnHeaderAhinta.Width = 95;
             // 
             // label1
             // 
