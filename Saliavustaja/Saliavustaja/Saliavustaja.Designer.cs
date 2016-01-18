@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.ColumnHeader columnHeaderTuote;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saliavustaja));
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Katkarapu-ceasar -salaatti",
             "14.90",
             "15,70",
@@ -42,31 +42,31 @@
             "17.40",
             "29.00",
             "27.60"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Maalaissalaatti kananmunalla ja pekoniruseteilla",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tulinen nyhtokaurahampurilainen",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Kermainen kolmen pähkinän pasta",
             "16.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miilunpolttajan pasta",
             "12.80"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Grillattuja pikkuahvenia, perunalumi",
             "21.20"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Haukimureke, fenkolipeti",
             "17.00"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Mustajuuri-chevrepihvit, hiiliperunat",
             "15.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Peuran sisäfile, metsäsienirisotto",
             "29.40"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "Rosvopaisti lampaan potkasta, haudutetut juurekset",
             "26.60"}, -1);
             this.TilausLista = new System.Windows.Forms.ListView();
@@ -96,17 +96,17 @@
             // columnHeaderTuote
             // 
             columnHeaderTuote.Text = "Tuote";
-            columnHeaderTuote.Width = 344;
+            columnHeaderTuote.Width = 268;
             // 
             // TilausLista
             // 
             this.TilausLista.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
-            this.TilausLista.Location = new System.Drawing.Point(396, 26);
-            this.TilausLista.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TilausLista.Location = new System.Drawing.Point(297, 21);
+            this.TilausLista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TilausLista.Name = "TilausLista";
-            this.TilausLista.Size = new System.Drawing.Size(748, 264);
+            this.TilausLista.Size = new System.Drawing.Size(562, 215);
             this.TilausLista.TabIndex = 1;
             this.TilausLista.UseCompatibleStateImageBehavior = false;
             // 
@@ -118,10 +118,10 @@
             // 
             this.UusiTilausButton.BackColor = System.Drawing.SystemColors.Control;
             this.UusiTilausButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UusiTilausButton.BackgroundImage")));
-            this.UusiTilausButton.Location = new System.Drawing.Point(37, 217);
-            this.UusiTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.UusiTilausButton.Location = new System.Drawing.Point(28, 176);
+            this.UusiTilausButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.UusiTilausButton.Name = "UusiTilausButton";
-            this.UusiTilausButton.Size = new System.Drawing.Size(100, 50);
+            this.UusiTilausButton.Size = new System.Drawing.Size(75, 41);
             this.UusiTilausButton.TabIndex = 30;
             this.UusiTilausButton.Text = "Uusi tilaus";
             this.UusiTilausButton.UseVisualStyleBackColor = false;
@@ -130,27 +130,30 @@
             // 
             this.TilausSummaLabel.AutoSize = true;
             this.TilausSummaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TilausSummaLabel.Location = new System.Drawing.Point(424, 713);
+            this.TilausSummaLabel.Location = new System.Drawing.Point(318, 579);
+            this.TilausSummaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TilausSummaLabel.Name = "TilausSummaLabel";
-            this.TilausSummaLabel.Size = new System.Drawing.Size(54, 20);
+            this.TilausSummaLabel.Size = new System.Drawing.Size(49, 17);
             this.TilausSummaLabel.TabIndex = 29;
             this.TilausSummaLabel.Text = "00,00";
             // 
             // VeroSummaLabel
             // 
             this.VeroSummaLabel.AutoSize = true;
-            this.VeroSummaLabel.Location = new System.Drawing.Point(434, 686);
+            this.VeroSummaLabel.Location = new System.Drawing.Point(326, 557);
+            this.VeroSummaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VeroSummaLabel.Name = "VeroSummaLabel";
-            this.VeroSummaLabel.Size = new System.Drawing.Size(44, 17);
+            this.VeroSummaLabel.Size = new System.Drawing.Size(34, 13);
             this.VeroSummaLabel.TabIndex = 28;
             this.VeroSummaLabel.Text = "00,00";
             // 
             // VerotonSummaLabel
             // 
             this.VerotonSummaLabel.AutoSize = true;
-            this.VerotonSummaLabel.Location = new System.Drawing.Point(434, 661);
+            this.VerotonSummaLabel.Location = new System.Drawing.Point(326, 537);
+            this.VerotonSummaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VerotonSummaLabel.Name = "VerotonSummaLabel";
-            this.VerotonSummaLabel.Size = new System.Drawing.Size(44, 17);
+            this.VerotonSummaLabel.Size = new System.Drawing.Size(34, 13);
             this.VerotonSummaLabel.TabIndex = 27;
             this.VerotonSummaLabel.Text = "00,00";
             // 
@@ -158,18 +161,20 @@
             // 
             this.KokonaishintaLabel.AutoSize = true;
             this.KokonaishintaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KokonaishintaLabel.Location = new System.Drawing.Point(41, 713);
+            this.KokonaishintaLabel.Location = new System.Drawing.Point(31, 579);
+            this.KokonaishintaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.KokonaishintaLabel.Name = "KokonaishintaLabel";
-            this.KokonaishintaLabel.Size = new System.Drawing.Size(209, 20);
+            this.KokonaishintaLabel.Size = new System.Drawing.Size(183, 17);
             this.KokonaishintaLabel.TabIndex = 26;
             this.KokonaishintaLabel.Text = "Tilauksen kokonaishinta";
             // 
             // VeronOsuusLabel
             // 
             this.VeronOsuusLabel.AutoSize = true;
-            this.VeronOsuusLabel.Location = new System.Drawing.Point(41, 686);
+            this.VeronOsuusLabel.Location = new System.Drawing.Point(31, 557);
+            this.VeronOsuusLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VeronOsuusLabel.Name = "VeronOsuusLabel";
-            this.VeronOsuusLabel.Size = new System.Drawing.Size(88, 17);
+            this.VeronOsuusLabel.Size = new System.Drawing.Size(66, 13);
             this.VeronOsuusLabel.TabIndex = 25;
             this.VeronOsuusLabel.Text = "Veron osuus";
             // 
@@ -177,19 +182,20 @@
             // 
             this.VerotonHintaLabel.AutoSize = true;
             this.VerotonHintaLabel.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.VerotonHintaLabel.Location = new System.Drawing.Point(41, 661);
+            this.VerotonHintaLabel.Location = new System.Drawing.Point(31, 537);
+            this.VerotonHintaLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.VerotonHintaLabel.Name = "VerotonHintaLabel";
-            this.VerotonHintaLabel.Size = new System.Drawing.Size(93, 17);
+            this.VerotonHintaLabel.Size = new System.Drawing.Size(70, 13);
             this.VerotonHintaLabel.TabIndex = 24;
             this.VerotonHintaLabel.Text = "Veroton hinta";
             // 
             // LisaaTilausButton
             // 
             this.LisaaTilausButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LisaaTilausButton.BackgroundImage")));
-            this.LisaaTilausButton.Location = new System.Drawing.Point(1019, 671);
-            this.LisaaTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LisaaTilausButton.Location = new System.Drawing.Point(764, 545);
+            this.LisaaTilausButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LisaaTilausButton.Name = "LisaaTilausButton";
-            this.LisaaTilausButton.Size = new System.Drawing.Size(100, 50);
+            this.LisaaTilausButton.Size = new System.Drawing.Size(75, 41);
             this.LisaaTilausButton.TabIndex = 23;
             this.LisaaTilausButton.Text = "Lisää tilaus";
             this.LisaaTilausButton.UseVisualStyleBackColor = true;
@@ -197,10 +203,10 @@
             // PeruTilausButton
             // 
             this.PeruTilausButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PeruTilausButton.BackgroundImage")));
-            this.PeruTilausButton.Location = new System.Drawing.Point(901, 671);
-            this.PeruTilausButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PeruTilausButton.Location = new System.Drawing.Point(676, 545);
+            this.PeruTilausButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PeruTilausButton.Name = "PeruTilausButton";
-            this.PeruTilausButton.Size = new System.Drawing.Size(100, 50);
+            this.PeruTilausButton.Size = new System.Drawing.Size(75, 41);
             this.PeruTilausButton.TabIndex = 22;
             this.PeruTilausButton.Text = "Peru tilaus";
             this.PeruTilausButton.UseVisualStyleBackColor = true;
@@ -208,10 +214,10 @@
             // PoistaAteriaButton
             // 
             this.PoistaAteriaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PoistaAteriaButton.BackgroundImage")));
-            this.PoistaAteriaButton.Location = new System.Drawing.Point(505, 525);
-            this.PoistaAteriaButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.PoistaAteriaButton.Location = new System.Drawing.Point(379, 427);
+            this.PoistaAteriaButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PoistaAteriaButton.Name = "PoistaAteriaButton";
-            this.PoistaAteriaButton.Size = new System.Drawing.Size(100, 50);
+            this.PoistaAteriaButton.Size = new System.Drawing.Size(75, 41);
             this.PoistaAteriaButton.TabIndex = 21;
             this.PoistaAteriaButton.Text = "<< Poista";
             this.PoistaAteriaButton.UseVisualStyleBackColor = true;
@@ -219,10 +225,10 @@
             // LisaaAteriaButton
             // 
             this.LisaaAteriaButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LisaaAteriaButton.BackgroundImage")));
-            this.LisaaAteriaButton.Location = new System.Drawing.Point(505, 463);
-            this.LisaaAteriaButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.LisaaAteriaButton.Location = new System.Drawing.Point(379, 376);
+            this.LisaaAteriaButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LisaaAteriaButton.Name = "LisaaAteriaButton";
-            this.LisaaAteriaButton.Size = new System.Drawing.Size(100, 50);
+            this.LisaaAteriaButton.Size = new System.Drawing.Size(75, 41);
             this.LisaaAteriaButton.TabIndex = 20;
             this.LisaaAteriaButton.Text = "Lisää >>";
             this.LisaaAteriaButton.UseVisualStyleBackColor = true;
@@ -231,11 +237,11 @@
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(657, 316);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(493, 257);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(487, 318);
+            this.dataGridView1.Size = new System.Drawing.Size(365, 258);
             this.dataGridView1.TabIndex = 19;
             // 
             // RuokalistaLaatikko
@@ -244,21 +250,21 @@
             columnHeaderTuote,
             this.columnHeaderAhinta});
             this.RuokalistaLaatikko.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
-            this.RuokalistaLaatikko.Location = new System.Drawing.Point(38, 360);
-            this.RuokalistaLaatikko.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10});
+            this.RuokalistaLaatikko.Location = new System.Drawing.Point(28, 292);
+            this.RuokalistaLaatikko.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RuokalistaLaatikko.MultiSelect = false;
             this.RuokalistaLaatikko.Name = "RuokalistaLaatikko";
-            this.RuokalistaLaatikko.Size = new System.Drawing.Size(443, 274);
+            this.RuokalistaLaatikko.Size = new System.Drawing.Size(332, 223);
             this.RuokalistaLaatikko.TabIndex = 18;
             this.RuokalistaLaatikko.UseCompatibleStateImageBehavior = false;
             this.RuokalistaLaatikko.View = System.Windows.Forms.View.Details;
@@ -272,9 +278,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 293);
+            this.label1.Location = new System.Drawing.Point(31, 238);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 17);
+            this.label1.Size = new System.Drawing.Size(67, 13);
             this.label1.TabIndex = 17;
             this.label1.Text = "Valitse pöytä";
             // 
@@ -290,10 +297,10 @@
             "Kabinetti 1",
             "Kabinetti 2",
             "Parveke "});
-            this.comboBox1.Location = new System.Drawing.Point(37, 320);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBox1.Location = new System.Drawing.Point(28, 260);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(443, 24);
+            this.comboBox1.Size = new System.Drawing.Size(333, 21);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -301,19 +308,20 @@
             // 
             this.TilauksetLabel.AutoSize = true;
             this.TilauksetLabel.BackColor = System.Drawing.SystemColors.Control;
-            this.TilauksetLabel.Location = new System.Drawing.Point(319, 24);
+            this.TilauksetLabel.Location = new System.Drawing.Point(239, 20);
+            this.TilauksetLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.TilauksetLabel.Name = "TilauksetLabel";
-            this.TilauksetLabel.Size = new System.Drawing.Size(65, 17);
+            this.TilauksetLabel.Size = new System.Drawing.Size(50, 13);
             this.TilauksetLabel.TabIndex = 31;
             this.TilauksetLabel.Text = "Tilaukset";
             // 
             // Saliavustaja
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1182, 755);
+            this.ClientSize = new System.Drawing.Size(888, 619);
             this.Controls.Add(this.TilauksetLabel);
             this.Controls.Add(this.UusiTilausButton);
             this.Controls.Add(this.TilausSummaLabel);
@@ -331,8 +339,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.TilausLista);
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1200, 800);
+            this.MinimumSize = new System.Drawing.Size(904, 657);
             this.Name = "Saliavustaja";
             this.Text = "Saliavustaja v0.02";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
