@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.ColumnHeader columnHeaderTuote;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saliavustaja));
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
             "Katkarapu-ceasar -salaatti",
             "14.90",
             "15,70",
@@ -42,31 +42,31 @@
             "17.40",
             "29.00",
             "27.60"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
             "Maalaissalaatti kananmunalla ja pekoniruseteilla",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tulinen nyhtokaurahampurilainen",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             "Kermainen kolmen pähkinän pasta",
             "16.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miilunpolttajan pasta",
             "12.80"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
             "Grillattuja pikkuahvenia, perunalumi",
             "21.20"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
             "Haukimureke, fenkolipeti",
             "17.00"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
             "Mustajuuri-chevrepihvit, hiiliperunat",
             "15.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem(new string[] {
             "Peuran sisäfile, metsäsienirisotto",
             "29.40"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem(new string[] {
             "Rosvopaisti lampaan potkasta, haudutetut juurekset",
             "26.60"}, -1);
             this.TilausListaLtk = new System.Windows.Forms.ListView();
@@ -252,16 +252,16 @@
             columnHeaderTuote,
             this.columnHeaderAhinta});
             this.RuokalistaLtk.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10});
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20});
             this.RuokalistaLtk.Location = new System.Drawing.Point(28, 292);
             this.RuokalistaLtk.Margin = new System.Windows.Forms.Padding(2);
             this.RuokalistaLtk.MultiSelect = false;
@@ -343,7 +343,7 @@
             this.Controls.Add(this.TilausListaLtk);
             this.MinimumSize = new System.Drawing.Size(904, 657);
             this.Name = "Saliavustaja";
-            this.Text = "Saliavustaja v0.02";
+            this.Text = "Saliavustaja v0.03";
             ((System.ComponentModel.ISupportInitialize)(this.TilauksenRivitLtk)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
