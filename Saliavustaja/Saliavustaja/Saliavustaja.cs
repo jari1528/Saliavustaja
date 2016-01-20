@@ -7,11 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// added
+using System.IO;
 
 namespace Saliavustaja
 {
     public partial class Saliavustaja : Form
     {
+        //tilauskantatiedoston nimi
+        const string tietokanta = "tiedosto.db";
+
+        // yleisinstanssi tilausmetodien kutsumiseen
+        Tilaushallinta tilaushallinta = new Tilaushallinta();
+
+        // tilaustietokanta
+        List<Tilaus> tilauskanta = new List<Tilaus>();
+
         public Saliavustaja()
         {
             InitializeComponent();
