@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//
+using System.Windows.Forms;
 
 namespace Saliavustaja
 {
@@ -10,5 +12,6 @@ namespace Saliavustaja
     {
         // luokka tilausten hallintaan
         public bool TilausKesken;
+
     }
 }
