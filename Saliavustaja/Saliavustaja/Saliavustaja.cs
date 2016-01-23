@@ -14,16 +14,26 @@ namespace Saliavustaja
 {
     public partial class Saliavustaja : Form
     {
+        //muistissa:
+        //testing
+        //string[] uusirivi = new string[] { "Erkki esimerkki", "13.45", "2" };
+        //TilausRivit.Rows.Add(uusirivi);
+
+        // ohjelman nimi vakio
+        const string ohjelmanNimi = "Saliavustaja (v0.5)";
+
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
 
         // yleisinstanssi tilausmetodien kutsumiseen
-        Tilaushallinta tilaushallinta = new Tilaushallinta();
+        Tilaus tilaushallinta = new Tilaus();
 
         // tilaustietokanta
         List<Tilaus> tilauskanta = new List<Tilaus>();
 
+        // muuttuja ohjelman tilan tarkistamiseen
         bool TilausKesken;
+
 
         public Saliavustaja()
         {
@@ -33,9 +43,12 @@ namespace Saliavustaja
         // metodi suoritetaan kun ikkuna avautuu
         private void Saliavustaja_Load(object sender, EventArgs e)
         {
+            // ikkunan otsikko
+            this.Text = ohjelmanNimi;
+
             // ohjelman avauksessa ei ole uutta tilausta auki
             TilausKesken = false;
-            TarkistaTila();
+            OhjelmanTila();
 
             // jos tietokantatiedosto löytyy niin yritetään ladata
             if (File.Exists(tietokanta))
@@ -62,21 +75,28 @@ namespace Saliavustaja
         }
         // <--- tarpeettomat
 
-        private void TarkistaTila()
+        // muuttaa painikkeiden ja elementtien tilan TilausKesken mukaisesti
+        private void OhjelmanTila()
         {
             if (TilausKesken == false)
             {
+                UusiTilausButton.Enabled = true;
                 LisaaRiviButton.Enabled = false;
                 PoistaRiviButton.Enabled = false;
                 PeruTilausButton.Enabled = false;
                 LisaaTilausButton.Enabled = false;
+
+                this.Text = ohjelmanNimi;
             }
             else if (TilausKesken == true)
             {
+                UusiTilausButton.Enabled = false;
                 LisaaRiviButton.Enabled = true;
                 PoistaRiviButton.Enabled = true;
                 PeruTilausButton.Enabled = true;
                 LisaaTilausButton.Enabled = true;
+
+                this.Text = ohjelmanNimi + " - UUSI TILAUS";
             }
         }
 
@@ -86,17 +106,17 @@ namespace Saliavustaja
             if (TilausKesken == false)
             {
                 TilausKesken = true;
-                TarkistaTila();
-            }
-            else if (TilausKesken == true)
+                OhjelmanTila();
+            }    
+        }
+
+        private void PeruTilausButton_Click(object sender, EventArgs e)
+        {
+            if (TilausKesken == true)
             {
                 TilausKesken = false;
-                TarkistaTila();
+                OhjelmanTila();
             }
-
-            //testing
-            //string[] uusirivi = new string[] { "Erkki esimerkki", "13.45", "2" };
-            //TilausRivit.Rows.Add(uusirivi);
         }
     }
 }

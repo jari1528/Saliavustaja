@@ -212,6 +212,7 @@
             this.PeruTilausButton.TabIndex = 22;
             this.PeruTilausButton.Text = "Peru tilaus";
             this.PeruTilausButton.UseVisualStyleBackColor = true;
+            this.PeruTilausButton.Click += new System.EventHandler(this.PeruTilausButton_Click);
             // 
             // PoistaRiviButton
             // 
@@ -344,7 +345,7 @@
             this.Controls.Add(this.TilausListaLtk);
             this.MinimumSize = new System.Drawing.Size(904, 657);
             this.Name = "Saliavustaja";
-            this.Text = "Saliavustaja v0.03";
+            this.Text = "Saliavustaja";
             this.Load += new System.EventHandler(this.Saliavustaja_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TilausRivitLtk)).EndInit();
             this.ResumeLayout(false);
