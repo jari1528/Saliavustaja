@@ -48,6 +48,7 @@ namespace Saliavustaja
 
             // ohjelman avauksessa ei ole uutta tilausta auki
             TilausKesken = false;
+            TyhjennaTilaus();
             OhjelmanTila();
 
             // jos tietokantatiedosto löytyy niin yritetään ladata
@@ -104,6 +105,9 @@ namespace Saliavustaja
         private void TyhjennaTilaus()
         {
             ValitsePoytaValikko.Text = "";
+            TilausVeroLabel.Text = "";
+            TilausVerotonLabel.Text = "";
+            TilausSummaLabel.Text = "";
             //TilausRivitLtk;
         }
 
@@ -119,9 +123,9 @@ namespace Saliavustaja
                     MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2);
                 if(perutaankoTilaus == DialogResult.Yes)
-                {
-                    TyhjennaTilaus();
+                { 
                     TilausKesken = false;
+                    TyhjennaTilaus();
                     OhjelmanTila();
                     return true;
                 }
@@ -135,6 +139,7 @@ namespace Saliavustaja
             if (TilausKesken == false)
             {
                 TilausKesken = true;
+                TyhjennaTilaus();
                 OhjelmanTila();
             }    
         }
@@ -152,7 +157,7 @@ namespace Saliavustaja
                 }
                 else if (peruttiinkoTilaus == false)
                 {
-                    MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
+                    // MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
                 }
             }
         }

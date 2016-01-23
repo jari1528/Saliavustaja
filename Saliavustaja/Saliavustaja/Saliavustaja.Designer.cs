@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.ColumnHeader columnHeaderTuote;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saliavustaja));
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem(new string[] {
             "Katkarapu-ceasar -salaatti",
             "14.90",
             "15,70",
@@ -42,31 +42,31 @@
             "17.40",
             "29.00",
             "27.60"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem(new string[] {
             "Maalaissalaatti kananmunalla ja pekoniruseteilla",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tulinen nyhtokaurahampurilainen",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem(new string[] {
             "Kermainen kolmen pähkinän pasta",
             "16.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miilunpolttajan pasta",
             "12.80"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem(new string[] {
             "Grillattuja pikkuahvenia, perunalumi",
             "21.20"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem(new string[] {
             "Haukimureke, fenkolipeti",
             "17.00"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem(new string[] {
             "Mustajuuri-chevrepihvit, hiiliperunat",
             "15.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem(new string[] {
             "Peuran sisäfile, metsäsienirisotto",
             "29.40"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem(new string[] {
             "Rosvopaisti lampaan potkasta, haudutetut juurekset",
             "26.60"}, -1);
             this.TilausListaLtk = new System.Windows.Forms.ListView();
@@ -89,6 +89,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ValitsePoytaValikko = new System.Windows.Forms.ComboBox();
             this.TilauksetLabel = new System.Windows.Forms.Label();
+            this.tuote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ahinta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maara = new System.Windows.Forms.DataGridViewTextBoxColumn();
             columnHeaderTuote = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.TilausRivitLtk)).BeginInit();
             this.SuspendLayout();
@@ -217,7 +220,7 @@
             // PoistaRiviButton
             // 
             this.PoistaRiviButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("PoistaRiviButton.BackgroundImage")));
-            this.PoistaRiviButton.Location = new System.Drawing.Point(395, 427);
+            this.PoistaRiviButton.Location = new System.Drawing.Point(383, 432);
             this.PoistaRiviButton.Margin = new System.Windows.Forms.Padding(2);
             this.PoistaRiviButton.Name = "PoistaRiviButton";
             this.PoistaRiviButton.Size = new System.Drawing.Size(75, 41);
@@ -228,7 +231,7 @@
             // LisaaRiviButton
             // 
             this.LisaaRiviButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LisaaRiviButton.BackgroundImage")));
-            this.LisaaRiviButton.Location = new System.Drawing.Point(395, 372);
+            this.LisaaRiviButton.Location = new System.Drawing.Point(383, 372);
             this.LisaaRiviButton.Margin = new System.Windows.Forms.Padding(2);
             this.LisaaRiviButton.Name = "LisaaRiviButton";
             this.LisaaRiviButton.Size = new System.Drawing.Size(75, 41);
@@ -238,14 +241,21 @@
             // 
             // TilausRivitLtk
             // 
+            this.TilausRivitLtk.AllowUserToAddRows = false;
+            this.TilausRivitLtk.AllowUserToDeleteRows = false;
             this.TilausRivitLtk.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.TilausRivitLtk.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TilausRivitLtk.Location = new System.Drawing.Point(493, 260);
+            this.TilausRivitLtk.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.tuote,
+            this.ahinta,
+            this.maara});
+            this.TilausRivitLtk.Location = new System.Drawing.Point(474, 260);
             this.TilausRivitLtk.Margin = new System.Windows.Forms.Padding(2);
             this.TilausRivitLtk.MultiSelect = false;
             this.TilausRivitLtk.Name = "TilausRivitLtk";
+            this.TilausRivitLtk.RowHeadersVisible = false;
             this.TilausRivitLtk.RowTemplate.Height = 24;
-            this.TilausRivitLtk.Size = new System.Drawing.Size(365, 255);
+            this.TilausRivitLtk.Size = new System.Drawing.Size(384, 255);
             this.TilausRivitLtk.TabIndex = 19;
             // 
             // RuokalistaLtk
@@ -254,16 +264,16 @@
             columnHeaderTuote,
             this.columnHeaderAhinta});
             this.RuokalistaLtk.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28,
+            listViewItem29,
+            listViewItem30});
             this.RuokalistaLtk.Location = new System.Drawing.Point(28, 292);
             this.RuokalistaLtk.Margin = new System.Windows.Forms.Padding(2);
             this.RuokalistaLtk.MultiSelect = false;
@@ -318,6 +328,26 @@
             this.TilauksetLabel.Size = new System.Drawing.Size(50, 13);
             this.TilauksetLabel.TabIndex = 31;
             this.TilauksetLabel.Text = "Tilaukset";
+            // 
+            // tuote
+            // 
+            this.tuote.HeaderText = "Tuote";
+            this.tuote.Name = "tuote";
+            this.tuote.ReadOnly = true;
+            this.tuote.Width = 250;
+            // 
+            // ahinta
+            // 
+            this.ahinta.HeaderText = "A-Hinta";
+            this.ahinta.Name = "ahinta";
+            this.ahinta.ReadOnly = true;
+            this.ahinta.Width = 66;
+            // 
+            // maara
+            // 
+            this.maara.HeaderText = "Määrä";
+            this.maara.Name = "maara";
+            this.maara.Width = 64;
             // 
             // Saliavustaja
             // 
@@ -375,6 +405,9 @@
         private System.Windows.Forms.Label TilauksetLabel;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeaderAhinta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tuote;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ahinta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maara;
     }
 }
 
