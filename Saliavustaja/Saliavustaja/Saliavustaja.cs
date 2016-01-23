@@ -100,6 +100,35 @@ namespace Saliavustaja
             }
         }
 
+        // tyhjentää tilauksen tiedot
+        private void TyhjennaTilaus()
+        {
+            ValitsePoytaValikko.Text = "";
+            //TilausRivitLtk;
+        }
+
+        // tilauksen peruminen, palauttaa bool peruttiinko tilaus
+        private bool PeruTilaus()
+        {
+            if(TilausKesken == true)
+            {
+                DialogResult perutaankoTilaus = MessageBox.Show(
+                    "Perutaanko tilaus, tiedot menetetään?",
+                    "Tilauksen peruminen",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2);
+                if(perutaankoTilaus == DialogResult.Yes)
+                {
+                    TyhjennaTilaus();
+                    TilausKesken = false;
+                    OhjelmanTila();
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void UusiTilausButton_Click(object sender, EventArgs e)
         {
             // jos tilaus jo kesken, button ei tee mitään
@@ -114,8 +143,17 @@ namespace Saliavustaja
         {
             if (TilausKesken == true)
             {
-                TilausKesken = false;
-                OhjelmanTila();
+                bool peruttiinkoTilaus = PeruTilaus();
+
+                // debug logiikkaa
+                if (peruttiinkoTilaus == true)
+                {
+                    MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
+                }
+                else if (peruttiinkoTilaus == false)
+                {
+                    MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
+                }
             }
         }
     }
