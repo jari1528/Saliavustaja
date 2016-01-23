@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-// added
+//
 using System.IO;
 
 namespace Saliavustaja
@@ -19,8 +19,8 @@ namespace Saliavustaja
         //string[] uusirivi = new string[] { "Erkki esimerkki", "13.45", "2" };
         //TilausRivit.Rows.Add(uusirivi);
 
-        // ohjelman nimi vakio
-        const string ohjelmanNimi = "Saliavustaja (v0.5)";
+        // ohjelman nimivakio
+        const string ohjelmanNimi = "Saliavustaja (v0.6)";
 
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
@@ -28,10 +28,10 @@ namespace Saliavustaja
         // yleisinstanssi tilausmetodien kutsumiseen
         Tilaus tilaushallinta = new Tilaus();
 
-        // tilaustietokanta
+        // tilaustietokanta lista
         List<Tilaus> tilauskanta = new List<Tilaus>();
 
-        // muuttuja ohjelman tilan tarkistamiseen
+        // muuttuja onko tilaus kesken
         bool TilausKesken;
 
 
@@ -40,7 +40,8 @@ namespace Saliavustaja
             InitializeComponent();
         }
 
-        // metodi suoritetaan kun ikkuna avautuu
+
+        // metodi suoritetaan kun ohjelma avautuu
         private void Saliavustaja_Load(object sender, EventArgs e)
         {
             // ikkunan otsikko
@@ -64,19 +65,7 @@ namespace Saliavustaja
             }           
         }
 
-        // tarpeettomat --->
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RuokalistaLaatikko_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        // <--- tarpeettomat
-
-        // muuttaa painikkeiden ja elementtien tilan TilausKesken mukaisesti
+        // muuttaa painikkeiden ja elementtien tilan bool TilausKesken mukaisesti
         private void OhjelmanTila()
         {
             if (TilausKesken == false)
@@ -101,6 +90,8 @@ namespace Saliavustaja
             }
         }
 
+        // ********* omat metodit ************
+    
         // tyhjentää tilauksen tiedot
         private void TyhjennaTilaus()
         {
@@ -108,7 +99,9 @@ namespace Saliavustaja
             TilausVeroLabel.Text = "";
             TilausVerotonLabel.Text = "";
             TilausSummaLabel.Text = "";
-            //TilausRivitLtk;
+
+            TilausRivitLtk.Rows.Clear();
+            //TilausRivitLtk.Refresh();
         }
 
         // tilauksen peruminen, palauttaa bool peruttiinko tilaus
@@ -132,27 +125,62 @@ namespace Saliavustaja
             return false;
         }
 
+
+        // ***** painikkeet ********
+
+
+        // uuden tilauksen aloitus painike
         private void UusiTilausButton_Click(object sender, EventArgs e)
         {
-            // jos tilaus jo kesken, button ei tee mitään
             if (TilausKesken == false)
             {
                 TilausKesken = true;
                 TyhjennaTilaus();
                 OhjelmanTila();
             }    
+         }
+
+        // Rivin lisääminen tilaukselle painike
+        private void LisaaRiviButton_Click(object sender, EventArgs e)
+        {
+            // tarkistetaan onko yhtään riviä valittu
+            if (RuokalistaLtk.SelectedItems.Count == 1)
+            {
+                // Lisää menusta valitun rivin tilausriviksi määrällä 1
+                int uusirivi = TilausRivitLtk.Rows.Add(RuokalistaLtk.SelectedItems[0].Text,
+                    RuokalistaLtk.SelectedItems[0].SubItems[1].Text, 1);
+
+                // valitaan juuri lisätyn rivin määrä solu
+                TilausRivitLtk.CurrentCell = TilausRivitLtk.Rows[uusirivi].Cells[2];
+
+                // vaihdetaan focus tilausrivilaatikkoon
+                TilausRivitLtk.Focus();
+            }
+
         }
 
+        // Rivin poistaminen tilaukselta
+        private void PoistaRiviButton_Click(object sender, EventArgs e)
+        {
+            // tarkistetaan onko solua valittu
+            if(TilausRivitLtk.SelectedCells.Count == 1)
+            {
+                TilausRivitLtk.Rows.RemoveAt(TilausRivitLtk.CurrentCell.RowIndex);
+            }
+        }
+
+        // painike tilauksen perumiselle
         private void PeruTilausButton_Click(object sender, EventArgs e)
         {
             if (TilausKesken == true)
             {
+                // kutsutaan tilauksen perumismetodia
                 bool peruttiinkoTilaus = PeruTilaus("Perutaanko tilaus, tiedot menetetään?");
 
                 // debug logiikkaa
                 if (peruttiinkoTilaus == true)
                 {
-                    MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
+                    //MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
                 }
                 else if (peruttiinkoTilaus == false)
                 {
@@ -161,10 +189,21 @@ namespace Saliavustaja
             }
         }
 
+        // tilauksen tallennus tilauskantaan
+        private void LisaaTilausButton_Click(object sender, EventArgs e)
+        {
+            // TODO
+        }
+
+
+        // **** ohjelman sulkeminen ****
+
+        // painettu ruksia ikkunan sulkemiseksi, tarkistetaan onko tilaus kesken
         private void Saliavustaja_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (TilausKesken == true)
             {
+                // kutsutaan tilauksen perumismetodia
                 bool peruttiinkoTilaus = PeruTilaus(
                     "Ohjelmaa suljetaan, sinulla on tallentamaton tilaus.\n" 
                     + "Perutaanko tilaus, tiedot menetetään?");
@@ -172,19 +211,36 @@ namespace Saliavustaja
                 // debug logiikkaa
                 if (peruttiinkoTilaus == true)
                 {
-                    MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
+                    //MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
                 }
                 else if (peruttiinkoTilaus == false)
                 {
-                    MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
+                    //MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
+
+                    // jos käyttäjä painaa dialogissa No, perutaan sulkeminen
                     e.Cancel = true;
                 }
             }
         }
 
+        // Tallennetaan tietokanta kun ohjelma sulkeutuu
         private void Saliavustaja_FormClosed(object sender, FormClosedEventArgs e)
         {
-            MessageBox.Show(Path.GetFullPath(tietokanta) + "\nTietokannan tallennus...", "Tiedoksi");
+            //MessageBox.Show(Path.GetFullPath(tietokanta) + "\nTietokannan tallennus...", "Tiedoksi");
+        }
+
+    
+
+
+        // *** tarpeettomat ***
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RuokalistaLaatikko_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

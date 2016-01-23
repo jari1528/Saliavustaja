@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.ColumnHeader columnHeaderTuote;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saliavustaja));
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem(new string[] {
             "Katkarapu-ceasar -salaatti",
             "14.90",
             "15,70",
@@ -42,31 +42,31 @@
             "17.40",
             "29.00",
             "27.60"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem(new string[] {
             "Maalaissalaatti kananmunalla ja pekoniruseteilla",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tulinen nyhtokaurahampurilainen",
             "13.90"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem(new string[] {
             "Kermainen kolmen pähkinän pasta",
             "16.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miilunpolttajan pasta",
             "12.80"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem(new string[] {
             "Grillattuja pikkuahvenia, perunalumi",
             "21.20"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem(new string[] {
             "Haukimureke, fenkolipeti",
             "17.00"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem(new string[] {
             "Mustajuuri-chevrepihvit, hiiliperunat",
             "15.50"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem(new string[] {
             "Peuran sisäfile, metsäsienirisotto",
             "29.40"}, -1);
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem(new string[] {
             "Rosvopaisti lampaan potkasta, haudutetut juurekset",
             "26.60"}, -1);
             this.TilausListaLtk = new System.Windows.Forms.ListView();
@@ -204,6 +204,7 @@
             this.LisaaTilausButton.TabIndex = 23;
             this.LisaaTilausButton.Text = "Lisää tilaus";
             this.LisaaTilausButton.UseVisualStyleBackColor = true;
+            this.LisaaTilausButton.Click += new System.EventHandler(this.LisaaTilausButton_Click);
             // 
             // PeruTilausButton
             // 
@@ -227,6 +228,7 @@
             this.PoistaRiviButton.TabIndex = 21;
             this.PoistaRiviButton.Text = "<< Poista";
             this.PoistaRiviButton.UseVisualStyleBackColor = true;
+            this.PoistaRiviButton.Click += new System.EventHandler(this.PoistaRiviButton_Click);
             // 
             // LisaaRiviButton
             // 
@@ -238,6 +240,7 @@
             this.LisaaRiviButton.TabIndex = 20;
             this.LisaaRiviButton.Text = "Lisää >>";
             this.LisaaRiviButton.UseVisualStyleBackColor = true;
+            this.LisaaRiviButton.Click += new System.EventHandler(this.LisaaRiviButton_Click);
             // 
             // TilausRivitLtk
             // 
@@ -284,16 +287,16 @@
             columnHeaderTuote,
             this.columnHeaderAhinta});
             this.RuokalistaLtk.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20});
+            listViewItem41,
+            listViewItem42,
+            listViewItem43,
+            listViewItem44,
+            listViewItem45,
+            listViewItem46,
+            listViewItem47,
+            listViewItem48,
+            listViewItem49,
+            listViewItem50});
             this.RuokalistaLtk.Location = new System.Drawing.Point(28, 292);
             this.RuokalistaLtk.Margin = new System.Windows.Forms.Padding(2);
             this.RuokalistaLtk.MultiSelect = false;
