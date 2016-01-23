@@ -55,7 +55,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tilaus.cs" />
-    <Compile Include="Tilaushallinta.cs" />
     <Compile Include="Tilausrivi.cs" />
     <EmbeddedResource Include="Saliavustaja.resx">
       <DependentUpon>Saliavustaja.cs</DependentUpon>
