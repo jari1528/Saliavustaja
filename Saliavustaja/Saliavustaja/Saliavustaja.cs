@@ -112,13 +112,12 @@ namespace Saliavustaja
         }
 
         // tilauksen peruminen, palauttaa bool peruttiinko tilaus
-        private bool PeruTilaus()
+        private bool PeruTilaus(string pteksti)
         {
             if(TilausKesken == true)
             {
                 DialogResult perutaankoTilaus = MessageBox.Show(
-                    "Perutaanko tilaus, tiedot menetetään?",
-                    "Tilauksen peruminen",
+                    pteksti,"Tilauksen peruminen",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2);
@@ -148,7 +147,7 @@ namespace Saliavustaja
         {
             if (TilausKesken == true)
             {
-                bool peruttiinkoTilaus = PeruTilaus();
+                bool peruttiinkoTilaus = PeruTilaus("Perutaanko tilaus, tiedot menetetään?");
 
                 // debug logiikkaa
                 if (peruttiinkoTilaus == true)
@@ -160,6 +159,32 @@ namespace Saliavustaja
                     // MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
                 }
             }
+        }
+
+        private void Saliavustaja_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (TilausKesken == true)
+            {
+                bool peruttiinkoTilaus = PeruTilaus(
+                    "Ohjelmaa suljetaan, sinulla on tallentamaton tilaus.\n" 
+                    + "Perutaanko tilaus, tiedot menetetään?");
+
+                // debug logiikkaa
+                if (peruttiinkoTilaus == true)
+                {
+                    MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
+                }
+                else if (peruttiinkoTilaus == false)
+                {
+                    MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
+                    e.Cancel = true;
+                }
+            }
+        }
+
+        private void Saliavustaja_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show(Path.GetFullPath(tietokanta) + "\nTietokannan tallennus...", "Tiedoksi");
         }
     }
 }
