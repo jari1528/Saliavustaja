@@ -14,19 +14,18 @@ namespace Saliavustaja
 {
     public partial class Saliavustaja : Form
     {
-        //muistissa:
-        //testing
-        //string[] uusirivi = new string[] { "Erkki esimerkki", "13.45", "2" };
-        //TilausRivit.Rows.Add(uusirivi);
-
+        // ****** vakiot ********
         // ohjelman nimivakio
-        const string ohjelmanNimi = "Saliavustaja (v0.6)";
+        const string ohjelmanNimi = "Saliavustaja (v0.8)";
 
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
 
         // ALV kerroin
         const double verokerroin = 1.14;
+
+
+        // **** instanssit *****
 
         // yleisinstanssi tilausmetodien kutsumiseen
         Tilaus tilaushallinta = new Tilaus();
@@ -38,11 +37,13 @@ namespace Saliavustaja
         bool TilausKesken;
 
 
+        // *** alustus ****
+
+        // oletusmuodostin
         public Saliavustaja()
         {
             InitializeComponent();
         }
-
 
         // metodi suoritetaan kun ohjelma avautuu
         private void Saliavustaja_Load(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace Saliavustaja
             // jos tietokantatiedosto löytyy niin yritetään ladata
             if (File.Exists(tietokanta))
             {
-                // tietokannan lataus, jos virhe niin lopetetaan ohjelma
+                // tietokannan lataus, jos virhe niin lopetetaan ohjelma heti
                 if ((tilaushallinta.LataaTilauskanta(tilauskanta, tietokanta)) == false)
                 {
                     MessageBox.Show(Path.GetFullPath(tietokanta) +
@@ -68,33 +69,40 @@ namespace Saliavustaja
             }           
         }
 
+
+        // ********* omat metodit ************
+
+
         // muuttaa painikkeiden ja elementtien tilan bool TilausKesken mukaisesti
         private void OhjelmanTila()
         {
             if (TilausKesken == false)
             {
+                // muutetaan nappien tiloja
                 UusiTilausButton.Enabled = true;
                 LisaaRiviButton.Enabled = false;
                 PoistaRiviButton.Enabled = false;
                 PeruTilausButton.Enabled = false;
                 LisaaTilausButton.Enabled = false;
 
+                // muutetaan ikkunan otsikkoa
                 this.Text = ohjelmanNimi;
             }
             else if (TilausKesken == true)
             {
+                // muutetaan nappien tiloja
                 UusiTilausButton.Enabled = false;
                 LisaaRiviButton.Enabled = true;
                 PoistaRiviButton.Enabled = true;
                 PeruTilausButton.Enabled = true;
                 LisaaTilausButton.Enabled = true;
 
+                // muutetaan ikkunan otsikkoa
                 this.Text = ohjelmanNimi + " - UUSI TILAUS";
             }
         }
-
-        // ********* omat metodit ************
     
+
         // tyhjentää tilauksen tiedot
         private void TyhjennaTilaus()
         {
@@ -103,20 +111,24 @@ namespace Saliavustaja
             TilausVerotonLabel.Text = "";
             TilausSummaLabel.Text = "";
 
+            // tyhjentää tilausrivit datagridview laatikon
             TilausRivitLtk.Rows.Clear();
-            //TilausRivitLtk.Refresh();
         }
+
 
         // tilauksen peruminen, palauttaa bool peruttiinko tilaus
         private bool PeruTilaus(string pteksti)
         {
             if(TilausKesken == true)
             {
+                // kysytään dialogilla varmistus Yes / No
                 DialogResult perutaankoTilaus = MessageBox.Show(
                     pteksti,"Tilauksen peruminen",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2);
+
+                // jos vastattiin Yes, perutaan
                 if(perutaankoTilaus == DialogResult.Yes)
                 { 
                     TilausKesken = false;
@@ -125,7 +137,54 @@ namespace Saliavustaja
                     return true;
                 }
             }
+
+            // ei peruttu, palautetaan false
             return false;
+        }
+
+
+        // palauttaa false jos laskennassa ongelma, esim. lukujen muutos ei onnistu
+        private bool LaskeTilauksenSummat()
+        {
+            //apumuuttujat
+            double loppusumma = 0;
+            double loppusummaveroton = 0;
+            double ahinta = 0;
+            double maara = 0;
+
+            // lasketaan loppusumma
+            for (int i = 0; i < TilausRivitLtk.Rows.Count; i++)
+            {
+                // haetaan ahinta laatikosta, muunnetaan teksti luvuksi
+                if (Double.TryParse(TilausRivitLtk.Rows[i].Cells[1].Value.ToString(), out ahinta) == false)
+                {
+                    // jos lukumuunnoksessa virhe, palautetaan heti false
+                    return false;
+                }
+
+                // haetaan määrä laatikosta, muunnetaan teksti luvuksi
+                if (Double.TryParse(TilausRivitLtk.Rows[i].Cells[2].Value.ToString(), out maara) == false)
+                {
+                    // jos lukumuunnoksessa virhe, palautetaan heti false false
+                    return false;
+                }
+
+                // loppusummaan lisätään tilausrivin a-hinta kertaa tilausrivin määrä
+                loppusumma = loppusumma + (ahinta * maara);
+            }
+            // loppusumma kahdelle desimaalille
+            loppusumma = Math.Round(loppusumma, 2);
+            TilausSummaLabel.Text = loppusumma.ToString("0.00") + " €";
+
+            // lasketaan veroton summa kahdella desimaalilla
+            loppusummaveroton = Math.Round(loppusumma / verokerroin, 2);
+            TilausVerotonLabel.Text = loppusummaveroton.ToString("0.00") + " €";
+
+            // veron osuus, verollinen miinus veroton
+            TilausVeroLabel.Text = (loppusumma - loppusummaveroton).ToString("0.00") + " €";
+
+            // palautetaan true jos kaikki ok
+            return true;
         }
 
 
@@ -235,6 +294,46 @@ namespace Saliavustaja
     
 
 
+
+        // tilausrivit, jos solua muutettu, lasketaan summat uudelleen
+        private void TilausRivitLtk_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            // lasketaan summat  vain jos tilaus on kesken
+            if (TilausKesken == true)
+            {
+                if(LaskeTilauksenSummat() == false)
+                {
+                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                }
+            }
+        }
+
+        // tilausrivit, jos rivi lisätty, lasketaan summat uudelleen
+        private void TilausRivitLtk_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            // lasketaan summat  vain jos tilaus on kesken
+            if (TilausKesken == true)
+            {
+                if (LaskeTilauksenSummat() == false)
+                {
+                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                }
+            }
+        }
+
+        // tilausrivit, jos rivi poistettu, lasketaan summat uudelleen
+        private void TilausRivitLtk_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            // lasketaan summat  vain jos tilaus on kesken
+            if (TilausKesken == true)
+            {
+                if (LaskeTilauksenSummat() == false)
+                {
+                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                }
+            }
+        }
+
         // *** tarpeettomat ***
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -245,5 +344,13 @@ namespace Saliavustaja
         {
 
         }
+
+        private void TilausRivitLtk_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        // **** 
+
     }
 }

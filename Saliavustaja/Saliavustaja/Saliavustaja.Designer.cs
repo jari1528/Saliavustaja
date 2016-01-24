@@ -32,43 +32,34 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Saliavustaja));
             System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
             "Katkarapu-ceasar -salaatti",
-            "14.90",
-            "15,70",
-            "13.00",
-            "13.90",
-            "12.90",
-            "22.90",
-            "17.00",
-            "17.40",
-            "29.00",
-            "27.60"}, -1);
+            "14,90"}, -1);
             System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Maalaissalaatti kananmunalla ja pekoniruseteilla",
-            "13.90"}, -1);
+            "13,90"}, -1);
             System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem(new string[] {
             "Tulinen nyhtokaurahampurilainen",
-            "13.90"}, -1);
+            "13,90"}, -1);
             System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem(new string[] {
             "Kermainen kolmen pähkinän pasta",
-            "16.50"}, -1);
+            "16,50"}, -1);
             System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem(new string[] {
             "Miilunpolttajan pasta",
-            "12.80"}, -1);
+            "12,80"}, -1);
             System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem(new string[] {
             "Grillattuja pikkuahvenia, perunalumi",
-            "21.20"}, -1);
+            "21,20"}, -1);
             System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem(new string[] {
             "Haukimureke, fenkolipeti",
-            "17.00"}, -1);
+            "17,00"}, -1);
             System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem(new string[] {
             "Mustajuuri-chevrepihvit, hiiliperunat",
-            "15.50"}, -1);
+            "15,50"}, -1);
             System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem(new string[] {
             "Peuran sisäfile, metsäsienirisotto",
-            "29.40"}, -1);
+            "29,40"}, -1);
             System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem(new string[] {
             "Rosvopaisti lampaan potkasta, haudutetut juurekset",
-            "26.60"}, -1);
+            "26,60"}, -1);
             this.UusiTilausButton = new System.Windows.Forms.Button();
             this.TilausSummaLabel = new System.Windows.Forms.Label();
             this.TilausVeroLabel = new System.Windows.Forms.Label();
@@ -242,6 +233,10 @@
             this.TilausRivitLtk.RowTemplate.Height = 24;
             this.TilausRivitLtk.Size = new System.Drawing.Size(384, 255);
             this.TilausRivitLtk.TabIndex = 19;
+            this.TilausRivitLtk.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TilausRivitLtk_CellContentClick);
+            this.TilausRivitLtk.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.TilausRivitLtk_CellValueChanged);
+            this.TilausRivitLtk.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.TilausRivitLtk_RowsAdded);
+            this.TilausRivitLtk.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.TilausRivitLtk_RowsRemoved);
             // 
             // tuote
             // 
