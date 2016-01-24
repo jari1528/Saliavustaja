@@ -337,6 +337,7 @@
             this.TilauksetLtk.Location = new System.Drawing.Point(296, 20);
             this.TilauksetLtk.MultiSelect = false;
             this.TilauksetLtk.Name = "TilauksetLtk";
+            this.TilauksetLtk.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TilauksetLtk.Size = new System.Drawing.Size(562, 215);
             this.TilauksetLtk.TabIndex = 32;
             // 

@@ -28,7 +28,7 @@ namespace Saliavustaja
         // **** instanssit *****
 
         // yleisinstanssi tilausmetodien kutsumiseen
-        Tilaus tilaushallinta = new Tilaus();
+        //Tilaus tilaushallinta = new Tilaus();
 
         // tilaustietokanta lista
         List<Tilaus> tilauskanta = new List<Tilaus>();
@@ -48,6 +48,9 @@ namespace Saliavustaja
         // metodi suoritetaan kun ohjelma avautuu
         private void Saliavustaja_Load(object sender, EventArgs e)
         {
+            // instanssi jotta voidaan kutsua Tilaus luokan metodia
+            Tilaus tilaushallinta = new Tilaus();
+
             // ikkunan otsikko
             this.Text = ohjelmanNimi;
 
@@ -115,6 +118,12 @@ namespace Saliavustaja
             TilausRivitLtk.Rows.Clear();
         }
 
+        // päivittää tilauslista laatikon sisällön
+        private void TilauslistaUpdate()
+        {
+
+        }
+
 
         // tilauksen peruminen, palauttaa bool peruttiinko tilaus
         private bool PeruTilaus(string pteksti)
@@ -144,6 +153,8 @@ namespace Saliavustaja
 
 
         // palauttaa false jos laskennassa ongelma, esim. lukujen muutos ei onnistu
+        // HUOM! laskee summat vain käyttöliittymään tilauksen ollessa kesken,
+        // tilauksen tallennuksessa lasketaan summat uudelleen.
         private bool LaskeTilauksenSummat()
         {
             //apumuuttujat
@@ -185,6 +196,53 @@ namespace Saliavustaja
 
             // palautetaan true jos kaikki ok
             return true;
+        }
+
+        // muuntaa tilausrivit laatikosta Tilaus objektiin
+        private bool MuunnaTilausRivit(Tilaus ptilaus)
+        {
+            if(TilausKesken == true)
+            {
+                // muunnetaan rivit
+                for (int i = 0; i < TilausRivitLtk.Rows.Count; i++)
+                {
+                    // apumuuttujat, vain loopissa olemassa
+                    double ahinta = 0;
+                    double maara = 0;
+
+                    // muodostetaan instanssi uudelle riville
+                    Tilausrivi uusirivi = new Tilausrivi();
+
+
+                    // haetaan ahinta laatikosta, muunnetaan teksti luvuksi apumuuttujaan
+                    if (Double.TryParse(TilausRivitLtk.Rows[i].Cells[1].Value.ToString(), out ahinta) == false)
+                    {
+                        // jos lukumuunnoksessa virhe, palautetaan heti false
+                        return false;
+                    }
+
+                    // haetaan määrä laatikosta, muunnetaan teksti luvuksi apumuuttujaan
+                    if (Double.TryParse(TilausRivitLtk.Rows[i].Cells[2].Value.ToString(), out maara) == false)
+                    {
+                        // jos lukumuunnoksessa virhe, palautetaan heti false
+                        return false;
+                    }
+
+                    // asetetaan arvot rivi objektiin
+                    uusirivi.tuote = TilausRivitLtk.Rows[i].Cells[0].Value.ToString();
+                    uusirivi.ahinta = ahinta;
+                    uusirivi.maara = maara;
+
+                    // lisätään uusi rivi tilaukselle
+                    ptilaus.tilausrivit.Add(uusirivi);
+                }
+
+                // muunnos onnistui
+                return true;
+            }
+
+            // ei tehty mitään, palautetaan false
+            return false;
         }
 
 
@@ -254,7 +312,29 @@ namespace Saliavustaja
         // tilauksen tallennus tilauskantaan
         private void LisaaTilausButton_Click(object sender, EventArgs e)
         {
-            // TODO
+            if(TilausKesken == true)
+            {
+                // instanssi tilaukselle
+                Tilaus uusitilaus = new Tilaus();
+
+                if(MuunnaTilausRivit(uusitilaus) == false)
+                {
+                    MessageBox.Show("Loppusummaa ei voitu laskea\nTarkista rivit!", "Virhe!");
+
+                    // jos virhe, palataan metodista heti
+                    return;
+                }
+
+                // tallennetaan tilaus tilauskantaan
+                uusitilaus.TallennaTilaus(tilauskanta, uusitilaus);
+
+                // päivitetään tilauslista
+
+                // tyhjennetään tilausrivit
+                TilausKesken = false;
+                TyhjennaTilaus();
+                OhjelmanTila();
+            }
         }
 
 
@@ -292,8 +372,7 @@ namespace Saliavustaja
         }
 
     
-
-
+        // ***** näkymien päivitys *****
 
         // tilausrivit, jos solua muutettu, lasketaan summat uudelleen
         private void TilausRivitLtk_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -303,7 +382,7 @@ namespace Saliavustaja
             {
                 if(LaskeTilauksenSummat() == false)
                 {
-                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                    MessageBox.Show("Loppusummaa ei voitu laskea\nTarkista rivit!", "Virhe!");
                 }
             }
         }
@@ -316,7 +395,7 @@ namespace Saliavustaja
             {
                 if (LaskeTilauksenSummat() == false)
                 {
-                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                    MessageBox.Show("Loppusummaa ei voitu laskea\nTarkista rivit!", "Virhe!");
                 }
             }
         }
@@ -329,7 +408,7 @@ namespace Saliavustaja
             {
                 if (LaskeTilauksenSummat() == false)
                 {
-                    MessageBox.Show("Loppusummaa ei voitu laskea\n, tarkista rivit!", "Virhe!");
+                    MessageBox.Show("Loppusummaa ei voitu laskea\nTarkista rivit!", "Virhe!");
                 }
             }
         }

@@ -11,9 +11,18 @@ namespace Saliavustaja
         // Luokka jossa säilytetään tilausrivin tiedot
         public string tuote;
         public double ahinta;
-        public int maara;
+        public double maara;
 
-        public Tilausrivi(string ptuote, double pahinta, int pmaara)
+        // oletusmuodostin, alustaa tyhjillä arvoilla
+        public Tilausrivi()
+        {
+            tuote = "";
+            ahinta = 0;
+            maara = 0;
+        }
+
+        // muodostin, alustaa parametrien arvoilla
+        public Tilausrivi(string ptuote, double pahinta, double pmaara)
         {
             tuote = ptuote;
             ahinta = pahinta;
