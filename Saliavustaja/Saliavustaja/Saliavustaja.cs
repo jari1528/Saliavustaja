@@ -69,7 +69,11 @@ namespace Saliavustaja
                     "\nLoading database failed, exiting!", "Error");
                     this.Close();
                 }
-            }           
+            }
+
+            // tilauslista refresh
+            TilauksetRefresh();
+            TilauksetLtk.ClearSelection();
         }
 
 
@@ -118,10 +122,21 @@ namespace Saliavustaja
             TilausRivitLtk.Rows.Clear();
         }
 
-        // päivittää tilauslista laatikon sisällön
-        private void TilauslistaUpdate()
+        // tilauslista laatikon refresh
+        private void TilauksetRefresh()
         {
+            // tyhjentää laatikon rivit
+            TilauksetLtk.Rows.Clear();
 
+            // lisätään tilauskannan kaikki tilaukset listaan
+            for (int i = 0; i < tilauskanta.Count; i++)
+            {
+                TilauksetLtk.Rows.Add(tilauskanta[i].Tilausnro, tilauskanta[i].poyta,
+                                      tilauskanta[i].Aikaleima, tilauskanta[i].Loppusumma);
+            }
+
+            // sortataan lista uusin ylös
+            TilauksetLtk.Sort(TilauksetLtk.Columns[0], ListSortDirection.Descending);
         }
 
 
@@ -276,7 +291,6 @@ namespace Saliavustaja
                 // vaihdetaan focus tilausrivilaatikkoon
                 TilausRivitLtk.Focus();
             }
-
         }
 
         // Rivin poistaminen tilaukselta
@@ -325,10 +339,23 @@ namespace Saliavustaja
                     return;
                 }
 
+                // tarkistetaan että on valittu pöytä
+                if (ValitsePoytaValikko.Text == "")
+                {
+                    MessageBox.Show("Pöytää ei ole valittu!", "Virhe!");
+
+                    // jos virhe, palataan metodista heti
+                    return;
+                }
+                else uusitilaus.poyta = ValitsePoytaValikko.Text;
+
                 // tallennetaan tilaus tilauskantaan
                 uusitilaus.TallennaTilaus(tilauskanta, uusitilaus);
 
-                // päivitetään tilauslista
+                // refresh tilauslista
+                TilauksetRefresh();
+                // tilauslistan selection pois
+                TilauksetLtk.ClearSelection();
 
                 // tyhjennetään tilausrivit
                 TilausKesken = false;
