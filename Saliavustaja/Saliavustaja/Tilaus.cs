@@ -20,6 +20,11 @@ namespace Saliavustaja
         protected int tilausnro;
         public string poyta;
         protected double loppusumma;
+        protected double loppusummaveroton;
+        protected double loppusummanvero;
+        protected DateTime aikaleima;
+
+        private const double verokerroin = 1.14;
 
         // getterit
         public int Tilausnro
@@ -30,6 +35,21 @@ namespace Saliavustaja
         public double Loppusumma
         {
             get { return loppusumma; }
+        }
+
+        public double LoppusummaVeroton
+        {
+            get { return loppusummaveroton; }
+        }
+
+        public double LoppusummanVero
+        {
+            get { return loppusummanvero; }
+        }
+
+        public DateTime Aikaleima
+        {
+            get { return aikaleima; }
         }
 
         // tilausrivit
@@ -57,7 +77,17 @@ namespace Saliavustaja
                 //loppusummaan lisätään tilausrivin a-hinta kertaa tilausrivin määrä
                 loppusumma = loppusumma + (uusitilaus.tilausrivit[i].ahinta * uusitilaus.tilausrivit[i].maara);
             }
-            uusitilaus.loppusumma = loppusumma;
+            // loppusumma tilaukselle kahdella desimaalilla
+            uusitilaus.loppusumma = Math.Round(loppusumma, 2);
+
+            // lasketaan veroton summa kahdella desimaalilla
+            uusitilaus.loppusummaveroton = Math.Round(uusitilaus.loppusumma / verokerroin, 2);
+
+            // veron osuus, verollinen miinus veroton
+            uusitilaus.loppusummanvero = uusitilaus.loppusumma - uusitilaus.loppusummaveroton;
+
+            // haetaan aikaleima tilaukselle
+            aikaleima = DateTime.Now;
 
             // lisätään tilauslistaan
             ptilaukset.Add(uusitilaus);

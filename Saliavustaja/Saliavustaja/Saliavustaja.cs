@@ -25,6 +25,9 @@ namespace Saliavustaja
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
 
+        // ALV kerroin
+        const double verokerroin = 1.14;
+
         // yleisinstanssi tilausmetodien kutsumiseen
         Tilaus tilaushallinta = new Tilaus();
 
