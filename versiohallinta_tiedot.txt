@@ -1,0 +1,7 @@
+Halusin kokeilla versionhallintaa projektissa koska sen käyttö on olennainen osa ohjelmointiprojekteja.
+Teimme käyttöönoton heti projektin käynnistyksessä, versiohallintana git, käyttäen github palvelua.
+Toiminnallisuus asennettiin Visual Studioon tämän ohjeen perusteella https://visualstudio.github.com
+samalla luotiin tunnukset.
+
+Koska ilmaisilla github tunnuksilla voi luoda vain julkisia projekteja, löytyy projektin koko versionhallinta netistä: https://github.com/jari1528/Saliavustaja
+
