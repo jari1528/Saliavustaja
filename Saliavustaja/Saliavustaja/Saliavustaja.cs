@@ -269,7 +269,7 @@ namespace Saliavustaja
             int kantaindeksi = -1;
             int i = 0;
 
-            while (i < tilauskanta.Count || kantaindeksi != -1)
+            while (i < tilauskanta.Count || kantaindeksi == -1)
             {
                 if (tilauskanta[i].Tilausnro == ptilausnro)
                 {
@@ -514,21 +514,20 @@ namespace Saliavustaja
 
                 TyhjennaTilaus();
 
-                MessageBox.Show(TilausRivitLtk.SelectedRows.Count.ToString(), "DEBUG");
-
-                // onko yhtään riviä valittu
-                if (TilausRivitLtk.SelectedCells.Count > 0)
+                //onko yksi rivi valittu
+                if (TilauksetLtk.SelectedRows.Count == 1)
                 {
-                    //MessageBox.Show(TilausRivitLtk.SelectedCells.Count, "DEBUG");
+                    //MessageBox.Show(TilauksetLtk.SelectedRows[0].Cells[0].Value.ToString(), "DEBUG");
 
-                    int valitturivi = TilausRivitLtk.SelectedCells[0].RowIndex;
-
-                    if (Int32.TryParse(TilausRivitLtk.Rows[valitturivi].Cells[0].Value.ToString(), out tilausnro) == false)
+                    if (Int32.TryParse(TilauksetLtk.SelectedRows[0].Cells[0].Value.ToString(), out tilausnro) == false)
                     {
                         // jos lukumuunnoksessa virhe, annetaan virhe ja palataan metodista heti
                         MessageBox.Show("Virhe tilausnumerossa", "Virhe!");
                         return;
                     }
+
+                    
+                    MessageBox.Show("Tilausnro: " + tilausnro, "DEBUG");
 
                     if (LataaTilauksenTiedot(tilausnro) == false)
                     {
@@ -536,16 +535,13 @@ namespace Saliavustaja
                         return;
                     }
                 }
-
-                
             }
             // jos tilaus on kesken niin tyhjennetään valinta
             else
             {
                 //MessageBox.Show("Tilaus kesken!", "Virhe!");
                 TilauksetLtk.ClearSelection();
-            }
-                
+            }          
         }
 
 
