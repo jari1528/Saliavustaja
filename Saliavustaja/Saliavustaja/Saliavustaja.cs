@@ -16,7 +16,7 @@ namespace Saliavustaja
     {
         // ****** vakiot ********
         // ohjelman nimivakio
-        const string ohjelmanNimi = "Saliavustaja (v0.8)";
+        const string ohjelmanNimi = "Saliavustaja (v0.9)";
 
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
@@ -73,6 +73,7 @@ namespace Saliavustaja
 
             // tilauslista refresh
             TilauksetRefresh();
+            // tilauslista selection pois
             TilauksetLtk.ClearSelection();
         }
 
@@ -105,10 +106,10 @@ namespace Saliavustaja
                 LisaaTilausButton.Enabled = true;
 
                 // muutetaan ikkunan otsikkoa
-                this.Text = ohjelmanNimi + " - UUSI TILAUS";
+                this.Text = ohjelmanNimi + " - *** UUSI TILAUS ***";
             }
         }
-    
+
 
         // tyhjentää tilauksen tiedot
         private void TyhjennaTilaus()
@@ -120,6 +121,7 @@ namespace Saliavustaja
 
             // tyhjentää tilausrivit datagridview laatikon
             TilausRivitLtk.Rows.Clear();
+            TilausRivitLtk.ReadOnly = false;
         }
 
         // tilauslista laatikon refresh
@@ -131,8 +133,8 @@ namespace Saliavustaja
             // lisätään tilauskannan kaikki tilaukset listaan
             for (int i = 0; i < tilauskanta.Count; i++)
             {
-                TilauksetLtk.Rows.Add(tilauskanta[i].Tilausnro, tilauskanta[i].poyta,
-                                      tilauskanta[i].Aikaleima, tilauskanta[i].Loppusumma);
+                TilauksetLtk.Rows.Add(tilauskanta[i].Tilausnro, tilauskanta[i].poyta, tilauskanta[i].Aikaleima,
+                                      tilauskanta[i].Loppusumma.ToString("0.00") + " €");
             }
 
             // sortataan lista uusin ylös
@@ -143,18 +145,18 @@ namespace Saliavustaja
         // tilauksen peruminen, palauttaa bool peruttiinko tilaus
         private bool PeruTilaus(string pteksti)
         {
-            if(TilausKesken == true)
+            if (TilausKesken == true)
             {
                 // kysytään dialogilla varmistus Yes / No
                 DialogResult perutaankoTilaus = MessageBox.Show(
-                    pteksti,"Tilauksen peruminen",
+                    pteksti, "Tilauksen peruminen",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning,
                     MessageBoxDefaultButton.Button2);
 
                 // jos vastattiin Yes, perutaan
-                if(perutaankoTilaus == DialogResult.Yes)
-                { 
+                if (perutaankoTilaus == DialogResult.Yes)
+                {
                     TilausKesken = false;
                     TyhjennaTilaus();
                     OhjelmanTila();
@@ -216,7 +218,7 @@ namespace Saliavustaja
         // muuntaa tilausrivit laatikosta Tilaus objektiin
         private bool MuunnaTilausRivit(Tilaus ptilaus)
         {
-            if(TilausKesken == true)
+            if (TilausKesken == true)
             {
                 // muunnetaan rivit
                 for (int i = 0; i < TilausRivitLtk.Rows.Count; i++)
@@ -260,6 +262,64 @@ namespace Saliavustaja
             return false;
         }
 
+        // palauttaa pyydetyn tilausnumeron indeksin tilauskannasta tai -1 jos tilausta ei löydy
+        private int EtsiTilausKannasta(int ptilausnro)
+        {
+            // apumuuttujat
+            int kantaindeksi = -1;
+            int i = 0;
+
+            while (i < tilauskanta.Count || kantaindeksi != -1)
+            {
+                if (tilauskanta[i].Tilausnro == ptilausnro)
+                {
+                    kantaindeksi = i;
+                }
+                else i++;
+            }
+            // jos while loop ei löydä tilausta niin palautuu vakioarvo -1
+            return kantaindeksi;
+        }
+
+        // lataa valitun tilauksen tiedot kannasta, palauttaa false jos tilausta ei löydy
+        private bool LataaTilauksenTiedot(int ptilausnro)
+        {
+            // apumuuttujat
+            int kantaindeksi;
+
+            kantaindeksi = EtsiTilausKannasta(ptilausnro);
+            if (kantaindeksi == -1)
+            {
+                return false;
+            }
+            else
+            {
+                // ikkunan otsikko tilausnumerolla
+                this.Text = ohjelmanNimi + " - Tilaus " + tilauskanta[kantaindeksi].Tilausnro;
+
+                // loppusumma kannasta
+                TilausSummaLabel.Text = tilauskanta[kantaindeksi].Loppusumma.ToString("0.00") + " €";
+
+                // veroton summa kannasta
+                TilausVerotonLabel.Text = tilauskanta[kantaindeksi].LoppusummaVeroton.ToString("0.00") + " €";
+
+                // veron osuus kannasta
+                TilausVeroLabel.Text = tilauskanta[kantaindeksi].LoppusummanVero.ToString("0.00") + " €";
+
+                // asetetaan tilausrivit readonly
+                TilausRivitLtk.ReadOnly = true;
+
+                // tilausrivit kannasta
+                for (int i = 0; i < tilauskanta[kantaindeksi].tilausrivit.Count; i++)
+                {
+                    TilausRivitLtk.Rows.Add(tilauskanta[kantaindeksi].tilausrivit[i].tuote, 
+                                            tilauskanta[kantaindeksi].tilausrivit[i].ahinta.ToString("0.00"),
+                                            tilauskanta[kantaindeksi].tilausrivit[i].maara.ToString());                
+                }
+            }
+            return true;
+        }
+
 
         // ***** painikkeet ********
 
@@ -269,6 +329,9 @@ namespace Saliavustaja
         {
             if (TilausKesken == false)
             {
+                // tilauslista selection pois
+                TilauksetLtk.ClearSelection();
+
                 TilausKesken = true;
                 TyhjennaTilaus();
                 OhjelmanTila();
@@ -309,7 +372,7 @@ namespace Saliavustaja
             if (TilausKesken == true)
             {
                 // kutsutaan tilauksen perumismetodia
-                bool peruttiinkoTilaus = PeruTilaus("Perutaanko tilaus, tiedot menetetään?");
+                bool peruttiinkoTilaus = PeruTilaus("Perutaanko tilaus?");
 
                 // debug logiikkaa
                 if (peruttiinkoTilaus == true)
@@ -375,7 +438,7 @@ namespace Saliavustaja
                 // kutsutaan tilauksen perumismetodia
                 bool peruttiinkoTilaus = PeruTilaus(
                     "Ohjelmaa suljetaan, sinulla on tallentamaton tilaus.\n" 
-                    + "Perutaanko tilaus, tiedot menetetään?");
+                    + "Perutaanko tilaus?");
 
                 // debug logiikkaa
                 if (peruttiinkoTilaus == true)
@@ -439,6 +502,52 @@ namespace Saliavustaja
                 }
             }
         }
+
+        // kun valitaan tilauslistalta jokin rivi
+        private void TilauksetLtk_SelectionChanged(object sender, EventArgs e)
+        {
+            // jos tilausta ei kesken niin ladataan valitun tilauksen tiedot
+            if(TilausKesken == false)
+            {
+                // apumuuttuja
+                int tilausnro = 0;
+
+                TyhjennaTilaus();
+
+                MessageBox.Show(TilausRivitLtk.SelectedRows.Count.ToString(), "DEBUG");
+
+                // onko yhtään riviä valittu
+                if (TilausRivitLtk.SelectedCells.Count > 0)
+                {
+                    //MessageBox.Show(TilausRivitLtk.SelectedCells.Count, "DEBUG");
+
+                    int valitturivi = TilausRivitLtk.SelectedCells[0].RowIndex;
+
+                    if (Int32.TryParse(TilausRivitLtk.Rows[valitturivi].Cells[0].Value.ToString(), out tilausnro) == false)
+                    {
+                        // jos lukumuunnoksessa virhe, annetaan virhe ja palataan metodista heti
+                        MessageBox.Show("Virhe tilausnumerossa", "Virhe!");
+                        return;
+                    }
+
+                    if (LataaTilauksenTiedot(tilausnro) == false)
+                    {
+                        MessageBox.Show("Tilausta ei löydy tilauskannasta", "Virhe!");
+                        return;
+                    }
+                }
+
+                
+            }
+            // jos tilaus on kesken niin tyhjennetään valinta
+            else
+            {
+                //MessageBox.Show("Tilaus kesken!", "Virhe!");
+                TilauksetLtk.ClearSelection();
+            }
+                
+        }
+
 
         // *** tarpeettomat ***
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
