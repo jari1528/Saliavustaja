@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace Saliavustaja
 {
@@ -16,10 +18,10 @@ namespace Saliavustaja
     {
         // ****** vakiot ********
         // ohjelman nimivakio
-        const string ohjelmanNimi = "Saliavustaja (v0.9.5)";
+        const string ohjelmanNimi = "Saliavustaja (v1.0)";
 
         //tilauskantatiedoston nimi
-        const string tietokanta = "tiedosto.db";
+        const string tietokanta = "tilauskanta.bin";
 
         // ALV kerroin
         const double verokerroin = 1.14;
@@ -51,9 +53,6 @@ namespace Saliavustaja
             // instanssi jotta voidaan kutsua Tilaus luokan metodia
             Tilaus tilaushallinta = new Tilaus();
 
-            // ikkunan otsikko
-            this.Text = ohjelmanNimi;
-
             // ohjelman avauksessa ei ole uutta tilausta auki
             TilausKesken = false;
             TyhjennaTilaus();
@@ -62,19 +61,38 @@ namespace Saliavustaja
             // jos tietokantatiedosto löytyy niin yritetään ladata
             if (File.Exists(tietokanta))
             {
-                // tietokannan lataus, jos virhe niin lopetetaan ohjelma heti
-                if ((tilaushallinta.LataaTilauskanta(tilauskanta, tietokanta)) == false)
+                try
+                {
+                    using (Stream tiedosto = File.Open(tietokanta, FileMode.Open))
+                    {
+                        BinaryFormatter bin = new BinaryFormatter();
+
+                        tilauskanta = (List<Tilaus>)bin.Deserialize(tiedosto);
+                    }
+                }
+                // jos tiedostovirhe, palautetaan false
+                catch (IOException)
                 {
                     MessageBox.Show(Path.GetFullPath(tietokanta) +
-                    "\nLoading database failed, exiting!", "Error");
+                    "\nVirhe tietokannan lataamisessa, lopetetaan!", "Virhe");
                     this.Close();
                 }
+                // jos datassa on virhe, palautetaan false
+                catch (SerializationException)
+                {
+                    MessageBox.Show(Path.GetFullPath(tietokanta) +
+                    "\nVirhe tietokannan lataamisessa, lopetetaan!", "Virhe");
+                    this.Close();
+                }         
             }
 
             // tilauslista refresh
             TilauksetRefresh();
             // tilauslista selection pois
             TilauksetLtk.ClearSelection();
+
+            // ikkunan otsikko
+            this.Text = ohjelmanNimi;
         }
 
 
@@ -439,17 +457,10 @@ namespace Saliavustaja
                 bool peruttiinkoTilaus = PeruTilaus(
                     "Ohjelmaa suljetaan, sinulla on tallentamaton tilaus.\n" 
                     + "Perutaanko tilaus?");
-
-                // debug logiikkaa
-                if (peruttiinkoTilaus == true)
+                
+                if (peruttiinkoTilaus == false)
                 {
-                    //MessageBox.Show("Tilaus peruttiin", "Tiedoksi");
-                }
-                else if (peruttiinkoTilaus == false)
-                {
-                    //MessageBox.Show("Tilausta ei peruttu", "Tiedoksi");
-
-                    // jos käyttäjä painaa dialogissa No, perutaan sulkeminen
+                    // jos käyttäjä painaa dialogissa No, ei peruta tilausta eikä suljeta ohjelmaa
                     e.Cancel = true;
                 }
             }
@@ -458,7 +469,16 @@ namespace Saliavustaja
         // Tallennetaan tietokanta kun ohjelma sulkeutuu
         private void Saliavustaja_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //MessageBox.Show(Path.GetFullPath(tietokanta) + "\nTietokannan tallennus...", "Tiedoksi");
+            // instanssi jotta voidaan kutsua Tilaus luokan metodia
+            Tilaus tilaushallinta = new Tilaus();
+
+            // tietokannan tallennus, jos virhe niin ilmoitetaan käyttäjälle
+            // tilanteesta ei ole paluuta takaisin
+            if ((tilaushallinta.TallennaTilauskanta(tilauskanta, tietokanta)) == false)
+            {
+                    MessageBox.Show(Path.GetFullPath(tietokanta) +
+                    "\nVirhe tietokannan tallentamisessa, tiedot menetetään..", "Virhe");
+            }
         }
 
     
@@ -536,7 +556,6 @@ namespace Saliavustaja
             // jos tilaus on kesken niin tyhjennetään valinta
             else
             {
-                //MessageBox.Show("Tilaus kesken!", "Virhe!");
                 TilauksetLtk.ClearSelection();
             }          
         }

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+// DEBUG
+using System.Windows.Forms;
 
 namespace Saliavustaja
 {
@@ -134,32 +136,7 @@ namespace Saliavustaja
             // jos datassa on virhe, palautetaan false
             catch (SerializationException)
             {
-                return false;
-            }
-        }
-
-        // tilauskannan luku tiedostosta. palauttaa false jos tulee virhe.
-        public bool LataaTilauskanta(List<Tilaus> ptilaukset, string tiedostonimi)
-        {
-            try
-            {
-                using (Stream tiedosto = File.Open(tiedostonimi, FileMode.Open))
-                {
-                    BinaryFormatter bin = new BinaryFormatter();
-
-                    ptilaukset = (List<Tilaus>)bin.Deserialize(tiedosto);
-                }
-                // jos luku onnistuu, palautetaan true
-                return true;
-            }
-            // jos tiedostovirhe, palautetaan false
-            catch (IOException)
-            {
-                return false;
-            }
-            // jos datassa on virhe, palautetaan false
-            catch (SerializationException)
-            {
+                MessageBox.Show("Serialization...", "Virhe!");
                 return false;
             }
         }

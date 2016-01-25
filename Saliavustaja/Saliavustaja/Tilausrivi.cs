@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Saliavustaja
 {
+    [Serializable()]
     class Tilausrivi
     {
         // Luokka jossa säilytetään tilausrivin tiedot
