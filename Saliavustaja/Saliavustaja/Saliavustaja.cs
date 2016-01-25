@@ -16,7 +16,7 @@ namespace Saliavustaja
     {
         // ****** vakiot ********
         // ohjelman nimivakio
-        const string ohjelmanNimi = "Saliavustaja (v0.9)";
+        const string ohjelmanNimi = "Saliavustaja (v0.9.5)";
 
         //tilauskantatiedoston nimi
         const string tietokanta = "tiedosto.db";
@@ -269,7 +269,7 @@ namespace Saliavustaja
             int kantaindeksi = -1;
             int i = 0;
 
-            while (i < tilauskanta.Count || kantaindeksi == -1)
+            while (i < tilauskanta.Count && kantaindeksi == -1)
             {
                 if (tilauskanta[i].Tilausnro == ptilausnro)
                 {
@@ -526,9 +526,6 @@ namespace Saliavustaja
                         return;
                     }
 
-                    
-                    MessageBox.Show("Tilausnro: " + tilausnro, "DEBUG");
-
                     if (LataaTilauksenTiedot(tilausnro) == false)
                     {
                         MessageBox.Show("Tilausta ei löydy tilauskannasta", "Virhe!");
@@ -546,6 +543,7 @@ namespace Saliavustaja
 
 
         // *** tarpeettomat ***
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
